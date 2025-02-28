@@ -136,6 +136,32 @@ export default function BlackjackGame() {
       return newDeck.pop()
     }
     const newDeck = [...deck]
+
+    // Rigging for dealer during dealer's turn
+    if (gameState === "dealerTurn") {
+      // Peek at the next card
+      const nextCard = newDeck[newDeck.length - 1]
+      const currentDealerScore = calculateScore(dealerHand)
+
+      // If dealer needs a good card (is under 17 but close)
+      if (currentDealerScore < 17 && currentDealerScore > 11) {
+        // Look through next few cards for a better one
+        for (let i = newDeck.length - 1; i >= Math.max(0, newDeck.length - 5); i--) {
+          const potentialCard = newDeck[i]
+          if (
+            currentDealerScore + potentialCard.numericValue <= 21 &&
+            currentDealerScore + potentialCard.numericValue >= 17
+          ) {
+            // Swap this card to the top
+            ;[newDeck[newDeck.length - 1], newDeck[i]] = [newDeck[i], newDeck[newDeck.length - 1]]
+            setMessage("*adjusts bow tie suspiciously*")
+            setTimeout(() => setMessage(""), 1500)
+            break
+          }
+        }
+      }
+    }
+
     const card = newDeck.pop()
     setDeck(newDeck)
     return card
@@ -170,22 +196,37 @@ export default function BlackjackGame() {
   }
 
   const startNewRound = () => {
-    // Ensure we have enough cards
     const currentDeck = deck.length < 10 ? shuffleDeck(createDeck()) : [...deck]
     setDeck(currentDeck)
 
-    // Deal cards one at a time
+    // Deal cards one at a time with potential rigging
     const cards = []
     for (let i = 0; i < 4; i++) {
+      if (i === 1 || i === 3) {
+        // Dealer's cards
+        // Look for a 10 or face card for dealer
+        const goodCardIndex = currentDeck.findIndex((card) => card.numericValue === 10)
+        if (goodCardIndex !== -1 && Math.random() < 0.3) {
+          // 30% chance of rigging
+          const goodCard = currentDeck.splice(goodCardIndex, 1)[0]
+          cards.push(goodCard)
+          setMessage("*adjusts feathers innocently*")
+          continue
+        }
+      }
       const card = currentDeck.pop()
       if (card) cards.push(card)
     }
+
     setDeck(currentDeck)
 
     if (cards.length === 4) {
       setPlayerHand([cards[0], cards[2]]) // First and third cards to player
       setDealerHand([cards[1], cards[3]]) // Second and fourth cards to dealer
       setGameState("playing")
+
+      // Clear dealing messages after a short delay
+      setTimeout(() => setMessage(""), 1500)
     }
   }
 
@@ -193,6 +234,12 @@ export default function BlackjackGame() {
     const card = drawCard()
     if (card) {
       setPlayerHand([...playerHand, card])
+      // Add taunts based on current score
+      const newScore = calculateScore([...playerHand, card])
+      if (newScore > 16) {
+        setMessage("Living dangerously, eh?")
+        setTimeout(() => setMessage(""), 1500)
+      }
     }
   }
 
@@ -204,13 +251,13 @@ export default function BlackjackGame() {
     setGameState("gameOver")
 
     if (playerFinalScore > 21) {
-      setMessage("Bust! You lose!")
+      setMessage("Bust! *snickers* Should've quit while you were ahead!")
       setLosses((prev) => prev + 1)
       return
     }
 
     if (dealerFinalScore > 21) {
-      setMessage("Dealer busts! You win!")
+      setMessage("*grumbles* Even a blind duck finds corn sometimes...")
       setChips(chips + currentBet * 2)
       setWins((prev) => prev + 1)
       triggerWinAnimation()
@@ -218,19 +265,19 @@ export default function BlackjackGame() {
     }
 
     if (playerFinalScore === dealerFinalScore) {
-      setMessage("Push! It's a tie!")
+      setMessage("Push! *straightens bow tie* Lucky you...")
       setChips(chips + currentBet)
       setPushes((prev) => prev + 1)
       return
     }
 
     if (playerFinalScore > dealerFinalScore) {
-      setMessage("You win!")
+      setMessage("*mutters under breath* Don't get used to it...")
       setChips(chips + currentBet * 2)
       setWins((prev) => prev + 1)
       triggerWinAnimation()
     } else {
-      setMessage("Dealer wins!")
+      setMessage("Dealer wins! *winks at the deck* Skills!")
       setLosses((prev) => prev + 1)
     }
   }
@@ -289,12 +336,16 @@ export default function BlackjackGame() {
             <DuckDealer
               message={
                 gameState === "betting"
-                  ? "Ready to get quackin'?"
-                  : gameState === "gameOver" && message.includes("win")
-                    ? "Quackity quack! Lucky duck!"
-                    : gameState === "gameOver"
-                      ? "Waddle away and try again!"
-                      : "Are you quackin' or not?"
+                  ? "Ready to lose- I mean, play?"
+                  : gameState === "gameOver" && message.includes("win") && !message.includes("Dealer")
+                    ? "Pure luck! *shuffles cards with a smirk*"
+                    : gameState === "gameOver" && message.includes("Dealer")
+                      ? "*adjusts dealer visor* All skill, no luck here!"
+                      : gameState === "playing" && playerScore > 15
+                        ? "Feeling lucky, duckling?"
+                        : gameState === "playing" && playerHand.length > 2
+                          ? "*whistles innocently*"
+                          : "The house always wins- er, deals first!"
               }
             />
 
