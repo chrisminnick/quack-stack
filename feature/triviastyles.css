@@ -9,10 +9,10 @@ h1 {
 }
 
 /* Subheading Styles */
-h3 {
+h2 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: x-large;
-  color: black; /* Changed to black */
+  color: red; /* Changed to black */
 }
 
 /* Warning Class */
