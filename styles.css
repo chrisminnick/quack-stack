@@ -1,35 +1,51 @@
+/* Header Styles */
 h1 {
-  color: greenyellow;
-  background-color: blue;
+  color: white; /* Changed to white for text */
+  background-color: red; /* Changed to red for background */
   padding: 50px;
   margin: 30px;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Subheading Styles */
 h3 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: x-large;
+  color: black; /* Changed to black */
 }
+
+/* Warning Class */
 .warning {
-  color: red;
+  color: red; /* Keeping red for warning */
   font-family: cursive;
 }
+
+/* Info Class */
 .info {
-  color: #00ff00;
+  color: lightgray; /* Changed to light gray */
 }
+
+/* Tech Stuff Class */
 .techstuff {
-  color: #dadada;
+  color: lightgray; /* Changed to light gray */
 }
+
+/* Navigation Styles */
 nav#topnav {
-  color: #d00d1e;
+  color: black; /* Changed to black */
 }
+
 nav#bottomnav {
-  color: springgreen;
+  color: lightgray; /* Changed to light gray */
 }
+
+/* Link Styles */
 a {
   text-decoration: none;
-  color: coral;
+  color: coral; /* Keeping coral for contrast */
 }
+
 a:link {
-  color: #d00d1e;
+  color: red; /* Changed to red for link */
 }
