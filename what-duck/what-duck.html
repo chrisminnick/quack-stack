@@ -1,57 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Duck Facts</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-    </style>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div class="container text-center mt-5">
-        <h1 class="mb-4">Duck Facts</h1>
-        <div class="image-container mb-3">
-            <img id="duckImage" src="https://via.placeholder.com/400x300" alt="Duck Image" class="img-fluid">
+    <div class="flex-container">
+    <div class="header">
+        <div class="left">
+            <div class="logo">Header Logo</div>
+            <div class="info">
+                <h3>This website is awesome</h3>
+                <span>This website has some subtext that goes here under the main title. It's a smaller font and the color is lower contrast.</span>
+            </div>
+            <div class="sign">Sign up</div>
         </div>
-        <p id="duckFact" class="lead">Click the button to learn a fun fact about ducks!</p>
-        <div class="d-flex justify-content-center gap-3 mt-4">
-            <button id="generateImage" class="btn btn-primary">Generate Image</button>
-            <button id="showFact" class="btn btn-success">Show Fact</button>
+
+        <div class="right">
+            <div class="nav">
+                <ul>
+                    <a href=""><li>header link one</li></a>
+                    <a href=""><li>header link two</li></a>
+                    <a href=""><li>header link three</li></a>
+                </ul>
+            </div>
+            <div class="image">
+                <img src="https://m.economictimes.com/thumb/height-450,width-600,imgsize-182458,msid-58980271/some-fun-facts-about-disneys-most-popular-character-donald-duck.jpg" alt="">
+            </div>
         </div>
     </div>
-
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Array of duck facts
-        const duckFacts = [
-            "Ducks have waterproof feathers due to a special oil they produce.",
-            "Ducks can sleep with one eye open to stay alert for predators.",
-            "A group of ducks is called a raft, team, or paddling.",
-            "Male ducks are called drakes, and females are called hens.",
-            "Ducks can live up to 10 years in the wild."
-        ];
-
-        // Event listener for "Generate Image" button
-        document.getElementById("generateImage").addEventListener("click", () => {
-            const imageUrl = "https://loremflickr.com/400/300/duck"; // Generates a random duck image
-            document.getElementById("duckImage").src = imageUrl;
-        });
-
-        // Event listener for "Show Fact" button
-        document.getElementById("showFact").addEventListener("click", () => {
-            const randomFact = duckFacts[Math.floor(Math.random() * duckFacts.length)];
-            document.getElementById("duckFact").innerText = randomFact;
-        });
-    </script>
+        <div class="midupper">
+            <div class="uppertitle">Some random information</div>
+            <div class="card-container">
+                <div class="card">
+                    <img src="https://m.economictimes.com/thumb/height-450,width-600,imgsize-182458,msid-58980271/some-fun-facts-about-disneys-most-popular-character-donald-duck.jpg" alt="">
+                    <p>this is some subtext under an image</p>
+                </div>
+                <div class="card">
+                    <img src="https://m.economictimes.com/thumb/height-450,width-600,imgsize-182458,msid-58980271/some-fun-facts-about-disneys-most-popular-character-donald-duck.jpg" alt="">
+                    <p>this is some subtext under an image</p>
+                </div>
+                <div class="card">
+                    <img src="https://m.economictimes.com/thumb/height-450,width-600,imgsize-182458,msid-58980271/some-fun-facts-about-disneys-most-popular-character-donald-duck.jpg" alt="">
+                    <p>this is some subtext under an image</p>
+                </div>
+                <div class="card">
+                    <img src="https://m.economictimes.com/thumb/height-450,width-600,imgsize-182458,msid-58980271/some-fun-facts-about-disneys-most-popular-character-donald-duck.jpg" alt="">
+                    <p>this is some subtext under an image</p>
+                </div>
+            </div>
+        </div>
+        <div class="midlower">
+            <div class="quote">
+                Some quote
+            </div>
+            <div class="author">
+              
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="call">
+                <div class="text">
+                    <span>Call to action! It's time!</span>
+                    <span>Sign up for our product by clicking that button right over there!</span>
+                </div>
+                <div class="sign">Sign up</div>
+            </div>
+        </div>
+        <div class="footer">
+            Copyright © Wilkenson, Matt, Joshua, Ani, Tia
+        </div>
+    </div>
+</div>
 </body>
-
 </html>
