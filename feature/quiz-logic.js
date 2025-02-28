@@ -71,7 +71,7 @@ let score = 0;
 
 const questionElement = document.getElementById("question");
 const optionsElement = document.getElementById("options");
-const submitButton = document.getElementById("submit-btn");
+const playAgainButton = document.getElementById("play-again-btn");
 const resultElement = document.getElementById("result");
 
 function loadQuestion() {
@@ -103,11 +103,22 @@ function selectOption(selectedOption) {
 function showResult() {
   questionElement.style.display = "none";
   optionsElement.style.display = "none";
-  submitButton.style.display = "none";
-  resultElement.textContent = `Your score: ${score} / ${questions.length}`;
+  playAgainButton.removeAttribute("hidden");
+  resultElement.innerText = `Your score: ${score} / ${questions.length}`;
+}
+
+function resetGame() {
+  currentQuestionIndex = 0;
+  score = 0;
+  questionElement.style.display = "block";
+  optionsElement.style.display = "block";
+  playAgainButton.setAttribute("hidden", "hidden");
+  resultElement.textContent = `Your score will appear here`;
+  loadQuestion();
 }
 
 //submitButton.addEventListener("click", loadQuestion);
+playAgainButton.addEventListener("click", resetGame);
 
 // Initialize the quiz
 loadQuestion();
