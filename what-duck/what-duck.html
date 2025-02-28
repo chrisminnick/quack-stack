@@ -1,79 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <script src="index.js" defer></script>
 </head>
 <body>
     <div class="flex-container">
-    <div class="header">
+      <!-- Header Section -->
+      <div class="header">
         <div class="left">
-            <div class="logo">Duck Facts and Images</div>
-            <div class="info">
-                <h3>This website is awesome</h3>
-                <span>This website has some subtext that goes here under the main title. It's a smaller font and the color is lower contrast.</span>
-            </div>
-            <div class="sign">Sign up</div>
+          <div class="logo">Duck Facts and Images</div>
+          <div class="info">
+            <h3>This website is awesome</h3>
+            <span>
+              This website has some subtext that goes here under the main title.
+              It's a smaller font and the color is lower contrast.
+            </span>
+          </div>
         </div>
-
         <div class="right">
-            <div class="nav">
-                <ul>
-                    <a href="/"><li>Home</li></a>
-                    <a href="/aboutUs"><li>About</li></a>
-                    <a href="https://www.four-paws.org/campaigns-topics/topics/farm-animals/10-facts-about-ducks"><li>More Facts</li></a>
-                </ul>
-            </div>
-            <div class="image">
-                <img src="https://m.economictimes.com/thumb/height-450,width-600,imgsize-182458,msid-58980271/some-fun-facts-about-disneys-most-popular-character-donald-duck.jpg" alt="">
-            </div>
+          <div class="nav">
+            <ul>
+              <a href="/"><li>Home</li></a>
+              <a href="/aboutUs"><li>About</li></a>
+              <a
+                href="https://www.four-paws.org/campaigns-topics/topics/farm-animals/10-facts-about-ducks"
+              >
+                <li>More Facts</li>
+              </a>
+            </ul>
+          </div>
+          <div class="image">
+            <img
+              src="https://m.economictimes.com/thumb/height-450,width-600,imgsize-182458,msid-58980271/some-fun-facts-about-disneys-most-popular-character-donald-duck.jpg"
+              alt="Duck Image"
+            />
+          </div>
         </div>
+      </div>
+
+      <!-- Upper Section with Duck Facts -->
+      <div class="midupper">
+        <div class="uppertitle">Interesting Facts About Ducks</div>
+        <div class="card-container">
+          <div class="card">
+            <img
+              src="https://m.economictimes.com/thumb/height-450,width-600,imgsize-182458,msid-58980271/some-fun-facts-about-disneys-most-popular-character-donald-duck.jpg"
+              alt="Duck swimming in water"
+            />
+            <p>
+              Ducks have waterproof feathers that keep them warm and dry while
+              swimming.
+            </p>
+          </div>
+          <div class="card">
+            <img
+              src="https://png.pngtree.com/png-clipart/20230411/original/pngtree-duck-wild-animal-transparent-on-white-background-png-image_9044365.png"
+              alt="Duck with ducklings"
+            />
+            <p>
+              Ducklings are born with the ability to swim and follow their
+              mother instinctively.
+            </p>
+          </div>
+          <div class="card">
+            <img
+              src="https://i.pinimg.com/originals/17/fa/41/17fa41d0ca9a1ed5f11ba1cbc71b3f8f.jpg"
+              alt="Ducks flying"
+            />
+            <p>
+              Many duck species migrate thousands of miles every year for
+              breeding and warmer climates.
+            </p>
+          </div>
+          <div class="card">
+            <img
+              src="https://thumbs.dreamstime.com/b/duck-white-white-background-40887480.jpg"
+              alt="Duck quacking"
+            />
+            <p>
+              Ducks use various quacks and calls to communicate with each other.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lower Section -->
+      <div class="midlower">
+        <div class="quote"></div>
+        <div class="author"></div>
+      </div>
+
+      <!-- Bottom Call-to-Action Section -->
+      <div class="bottom">
+        <div class="call">
+          <div class="text">
+            <span>Click the button for a quack sound</span>
+          </div>
+        <div class="sign" id="quackButton">Quack</div>
+      </div>
+
+      <!-- Footer Section -->
+      <div class="footer">Copyright © Wilkenson, Matt, Joshua, Ani, Tia</div>
     </div>
-        <div class="midupper">
-            <div class="uppertitle">Some random information</div>
-            <div class="card-container">
-                <div class="card">
-                    <img src="https://m.economictimes.com/thumb/height-450,width-600,imgsize-182458,msid-58980271/some-fun-facts-about-disneys-most-popular-character-donald-duck.jpg" alt="">
-                    <p>this is some subtext under an image</p>
-                </div>
-                <div class="card">
-                    <img src="https://m.economictimes.com/thumb/height-450,width-600,imgsize-182458,msid-58980271/some-fun-facts-about-disneys-most-popular-character-donald-duck.jpg" alt="">
-                    <p>this is some subtext under an image</p>
-                </div>
-                <div class="card">
-                    <img src="https://m.economictimes.com/thumb/height-450,width-600,imgsize-182458,msid-58980271/some-fun-facts-about-disneys-most-popular-character-donald-duck.jpg" alt="">
-                    <p>this is some subtext under an image</p>
-                </div>
-                <div class="card">
-                    <img src="https://m.economictimes.com/thumb/height-450,width-600,imgsize-182458,msid-58980271/some-fun-facts-about-disneys-most-popular-character-donald-duck.jpg" alt="">
-                    <p>this is some subtext under an image</p>
-                </div>
-            </div>
-        </div>
-        <div class="midlower">
-            <div class="quote">
-                Some quote
-            </div>
-            <div class="author">
-              
-            </div>
-        </div>
-        <div class="bottom">
-            <div class="call">
-                <div class="text">
-                    <span>Click the button for a quack sound</span>
-                </div>
-                <div class="sign" id="quackButton">Quack</div>
-            </div>
-        </div>
-        <div class="footer">
-            Copyright © Wilkenson, Matt, Joshua, Ani, Tia
-        </div>
-    </div>
-</div>
-</body>
+  </body>
 </html>
