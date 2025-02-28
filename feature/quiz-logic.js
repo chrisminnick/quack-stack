@@ -110,23 +110,18 @@ function showResult() {
 }
 
 function resetGame() {
-  // console.log("resetting");
-  // currentQuestionIndex = 0;
-  // score = 0;
-  // console.log(`${currentQuestionIndex}`);
-  // questionElement.style.display = "block";
-  // optionsElement.style.display = "block";
-  // submitButton.style.display = "block";
-  // playAgainButton.setAttribute("hidden", "hidden");
-  // resultElement.textContent = `Your score will appear here`;
-  // loadQuestion();
-  if (currentQuestionIndex == questions.length) {
-    location.reload();
-  }
+  currentQuestionIndex = 0;
+  score = 0;
+  questionElement.style.display = "block";
+  optionsElement.style.display = "block";
+  submitButton.style.display = "block";
+  playAgainButton.setAttribute("hidden", "hidden");
+  resultElement.textContent = `Your score will appear here`;
+  loadQuestion();
 }
 
 submitButton.addEventListener("click", loadQuestion);
-playAgainButton.addEventListener("click", resetGame());
+playAgainButton.addEventListener("click", resetGame);
 
 // Initialize the quiz
 loadQuestion();
