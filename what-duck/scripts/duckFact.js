@@ -1,6 +1,6 @@
 async function getFact() {
   try {
-    const response = await fetch(`duckFacts.json`);
+    const response = await fetch(`../duckFacts.json`);
     const facts = await response.json();
 
     const randomFact = facts[Math.floor(Math.random() * facts.length)];
