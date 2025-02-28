@@ -1,51 +1,35 @@
-/* Header Styles */
 h1 {
-  color: white; /* Changed to white for text */
-  background-color: red; /* Changed to red for background */
+  color: greenyellow;
+  background-color: blue;
   padding: 50px;
   margin: 30px;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
 }
-
-/* Subheading Styles */
 h3 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: x-large;
-  color: black; /* Changed to black */
 }
-
-/* Warning Class */
 .warning {
-  color: red; /* Keeping red for warning */
+  color: red;
   font-family: cursive;
 }
-
-/* Info Class */
 .info {
-  color: lightgray; /* Changed to light gray */
+  color: #00ff00;
 }
-
-/* Tech Stuff Class */
 .techstuff {
-  color: lightgray; /* Changed to light gray */
+  color: #dadada;
 }
-
-/* Navigation Styles */
 nav#topnav {
-  color: black; /* Changed to black */
+  color: #d00d1e;
 }
-
 nav#bottomnav {
-  color: lightgray; /* Changed to light gray */
+  color: springgreen;
 }
-
-/* Link Styles */
 a {
   text-decoration: none;
-  color: coral; /* Keeping coral for contrast */
+  color: coral;
 }
-
 a:link {
-  color: red; /* Changed to red for link */
+  color: #d00d1e;
 }
