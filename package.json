@@ -11,5 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "serve": "^14.2.4"
-  }
+  },
+  "proxy": "http://localhost:3000"
 }
