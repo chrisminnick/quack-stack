@@ -1,7 +1,7 @@
 /* Header Styles */
 h1 {
   color: white; /* Changed to white for text */
-  background-color: red; /* Changed to red for background */
+  background-color: pink; /* Changed to red for background */
   padding: 50px;
   margin: 30px;
   text-align: center;
@@ -48,4 +48,22 @@ a {
 
 a:link {
   color: red; /* Changed to red for link */
+}
+
+.option-btn {
+  background-color: #0077ff; /* Green background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 15px 32px; /* Some padding */
+  text-align: center; /* Centered text */
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Make the button inline */
+  font-size: 16px; /* Increase font size */
+  margin: 4px 2px; /* Some margin */
+  cursor: pointer; /* Pointer/hand icon */
+  border-color: rgb(255, 255, 255);
+  border-style: solid;
+  border-radius: 5px; /* Rounded corners */
+  filter: drop-shadow(4px 4px 4px #000000);
+  transition: background-color 0.3s ease; /* Smooth transition */
 }

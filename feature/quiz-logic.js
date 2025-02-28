@@ -120,7 +120,7 @@ function resetGame() {
   loadQuestion();
 }
 
-submitButton.addEventListener("click", loadQuestion);
+//submitButton.addEventListener("click", loadQuestion);
 playAgainButton.addEventListener("click", resetGame);
 
 // Initialize the quiz
