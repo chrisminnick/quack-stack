@@ -1,27 +1,15 @@
-// Get references to the elements
-const duckImage = document.getElementById("duckImage");
-const duckButton = document.getElementById("generateImage");
+function getRandomDuck() {
+    const randomNumber = Math.floor(Math.random() * 100) + 1;  // Generate a random number between 1 and 100
+    const imageUrl = `https://random-d.uk/api/${randomNumber}.jpg`;  // Construct the image URL
 
-// Define the function to fetch the duck image
-async function getRandomDuck() {
-    console.log("Button clicked! Fetching new duck...");
-
-    try {
-        // Fetch the random duck image from the API
-        const response = await fetch("http://random-d.uk/api/random");
-        
-        // If the response is successful, parse the data
-        if (response.ok) {
-            const data = await response.json();
-            duckImage.src = data.url;
-        } else {
-            console.error("Error fetching duck image:", response.status);
-        }
-    } catch (error) {
-        console.error("Error fetching duck image:", error);
-    }
+    document.getElementById('duckImage').src = imageUrl;  // Update the image source
 }
 
-// Add an event listener to the button to fetch a new duck image when clicked
-duckButton.addEventListener("click", getRandomDuck);
+// Add event listener to the button when DOM is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('generateImage').addEventListener('click', getRandomDuck);
+});
+
+
+
 
