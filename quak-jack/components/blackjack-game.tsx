@@ -345,7 +345,7 @@ export default function BlackjackGame() {
                         ? "Feeling lucky, duckling?"
                         : gameState === "playing" && playerHand.length > 2
                           ? "*whistles innocently*"
-                          : "The house always wins- er, deals first!"
+                          : "The house always wins, deals first!"
               }
             />
 
