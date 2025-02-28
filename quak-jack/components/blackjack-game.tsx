@@ -27,6 +27,9 @@ export default function BlackjackGame() {
   const [dealerCardHidden, setDealerCardHidden] = useState(true)
   const [chips, setChips] = useState(100)
   const [currentBet, setCurrentBet] = useState(0)
+  const [wins, setWins] = useState(0)
+  const [losses, setLosses] = useState(0)
+  const [pushes, setPushes] = useState(0)
 
   // Initialize deck
   useEffect(() => {
@@ -118,6 +121,7 @@ export default function BlackjackGame() {
 
   const shuffleDeck = (deck: CardType[]) => {
     const newDeck = [...deck]
+    // Fisher-Yates shuffle algorithm
     for (let i = newDeck.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1))
       ;[newDeck[i], newDeck[j]] = [newDeck[j], newDeck[i]]
@@ -126,7 +130,11 @@ export default function BlackjackGame() {
   }
 
   const drawCard = () => {
-    if (deck.length === 0) return null
+    if (deck.length === 0) {
+      const newDeck = shuffleDeck(createDeck())
+      setDeck(newDeck)
+      return newDeck.pop()
+    }
     const newDeck = [...deck]
     const card = newDeck.pop()
     setDeck(newDeck)
@@ -162,18 +170,21 @@ export default function BlackjackGame() {
   }
 
   const startNewRound = () => {
-    const newDeck = deck.length < 10 ? shuffleDeck(createDeck()) : deck
-    setDeck(newDeck)
+    // Ensure we have enough cards
+    const currentDeck = deck.length < 10 ? shuffleDeck(createDeck()) : [...deck]
+    setDeck(currentDeck)
 
-    // Deal initial cards
-    const pCard1 = drawCard()
-    const dCard1 = drawCard()
-    const pCard2 = drawCard()
-    const dCard2 = drawCard()
+    // Deal cards one at a time
+    const cards = []
+    for (let i = 0; i < 4; i++) {
+      const card = currentDeck.pop()
+      if (card) cards.push(card)
+    }
+    setDeck(currentDeck)
 
-    if (pCard1 && pCard2 && dCard1 && dCard2) {
-      setPlayerHand([pCard1, pCard2])
-      setDealerHand([dCard1, dCard2])
+    if (cards.length === 4) {
+      setPlayerHand([cards[0], cards[2]]) // First and third cards to player
+      setDealerHand([cards[1], cards[3]]) // Second and fourth cards to dealer
       setGameState("playing")
     }
   }
@@ -194,12 +205,14 @@ export default function BlackjackGame() {
 
     if (playerFinalScore > 21) {
       setMessage("Bust! You lose!")
+      setLosses((prev) => prev + 1)
       return
     }
 
     if (dealerFinalScore > 21) {
       setMessage("Dealer busts! You win!")
       setChips(chips + currentBet * 2)
+      setWins((prev) => prev + 1)
       triggerWinAnimation()
       return
     }
@@ -207,15 +220,18 @@ export default function BlackjackGame() {
     if (playerFinalScore === dealerFinalScore) {
       setMessage("Push! It's a tie!")
       setChips(chips + currentBet)
+      setPushes((prev) => prev + 1)
       return
     }
 
     if (playerFinalScore > dealerFinalScore) {
       setMessage("You win!")
       setChips(chips + currentBet * 2)
+      setWins((prev) => prev + 1)
       triggerWinAnimation()
     } else {
       setMessage("Dealer wins!")
+      setLosses((prev) => prev + 1)
     }
   }
 
@@ -229,13 +245,34 @@ export default function BlackjackGame() {
 
   const handleNewGame = () => {
     setCurrentBet(0)
+    // Only reset scores if player is broke
+    if (chips === 0) {
+      setWins(0)
+      setLosses(0)
+      setPushes(0)
+      setChips(100)
+    }
     initializeGame()
   }
 
   return (
     <Card className="w-full max-w-4xl p-6 bg-green-700 border-4 border-yellow-800 shadow-2xl">
       <div className="flex flex-col items-center">
-        <h1 className="text-3xl font-bold text-yellow-300 mb-4">Duck Blackjack</h1>
+        <h1 className="text-3xl font-bold text-yellow-300 mb-4">QuackJack</h1>
+        <div className="w-full flex justify-around mb-6 bg-black/30 p-4 rounded-lg">
+          <div className="text-center">
+            <span className="text-green-400 font-bold text-xl">{wins}</span>
+            <p className="text-yellow-200">Wins</p>
+          </div>
+          <div className="text-center">
+            <span className="text-red-400 font-bold text-xl">{losses}</span>
+            <p className="text-yellow-200">Losses</p>
+          </div>
+          <div className="text-center">
+            <span className="text-blue-400 font-bold text-xl">{pushes}</span>
+            <p className="text-yellow-200">Pushes</p>
+          </div>
+        </div>
 
         {/* Dealer section */}
         <div className="w-full mb-8">
@@ -252,12 +289,12 @@ export default function BlackjackGame() {
             <DuckDealer
               message={
                 gameState === "betting"
-                  ? "Place your bet!"
+                  ? "Ready to get quackin'?"
                   : gameState === "gameOver" && message.includes("win")
-                    ? "Quack! You got lucky!"
+                    ? "Quackity quack! Lucky duck!"
                     : gameState === "gameOver"
-                      ? "Quack! Better luck next time!"
-                      : "Quack! Hit or stand?"
+                      ? "Waddle away and try again!"
+                      : "Are you quackin' or not?"
               }
             />
 
