@@ -12,7 +12,7 @@ h1 {
 h2 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: x-large;
-  color: red; /* Changed to black */
+  color: black; /* Changed to black */
 }
 
 /* Warning Class */
