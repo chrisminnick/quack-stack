@@ -107,7 +107,7 @@ function showResult() {
   resultElement.textContent = `Your score: ${score} / ${questions.length}`;
 }
 
-submitButton.addEventListener("click", loadQuestion);
+//submitButton.addEventListener("click", loadQuestion);
 
 // Initialize the quiz
 loadQuestion();
